@@ -217,9 +217,7 @@ impl Default for ScanResolutions {
 impl Config {
     /// Get the path to the config file
     pub fn config_path() -> Result<PathBuf> {
-        let config_dir = app_dirs::app_root(app_dirs::AppDataType::UserConfig, &super::APP_INFO)
-            .context("Could not determine XDG app config directory")?;
-        Ok(config_dir.join("config.yml"))
+        Ok(PathBuf::from("arkivisto.yml"))
     }
 
     /// Load config from a specific path
