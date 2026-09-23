@@ -755,10 +755,7 @@ fn resolve_conflict(output_path: &Path) -> Result<ConflictResolution> {
 pub fn generate_filename(title: &str, date: NaiveDate) -> String {
     let date_str = date.format("%Y-%m-%d").to_string();
 
-    let mut filename = format!("{}-{}.pdf", date_str, title);
-
-    // Lowercase
-    filename = filename.to_lowercase();
+    let mut filename = format!("{}_{}.pdf", date_str, title);
 
     // Replace German umlauts
     filename = filename
@@ -768,7 +765,7 @@ pub fn generate_filename(title: &str, date: NaiveDate) -> String {
         .replace('ß', "ss");
 
     // Replace spaces and slashes with hyphens
-    filename = filename.replace([' ', '/', '_'], "-");
+    filename = filename.replace([' ', '/'], "_");
 
     // Collapse multiple hyphens
     while filename.contains("--") {
